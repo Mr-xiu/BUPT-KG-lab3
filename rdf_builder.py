@@ -5,7 +5,7 @@ import json
 class RDFBuilder:
     def __init__(self) -> None:
         self.rdf = Graph()  # RDF图
-        self.ns = Namespace('https://www.pornhub.com/')
+        self.ns = Namespace('https://www.114514.com/')
         self.entity_list = json.load(open('data/entity_result.json', 'r', encoding='utf-8'))  # data的结构是一个list
 
     def clean_text(self, text: str):
