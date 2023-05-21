@@ -1,4 +1,4 @@
-from rdflib import Graph, URIRef, Namespace, Literal
+from rdflib import Graph, Namespace, Literal
 import json
 
 
@@ -12,7 +12,7 @@ class RDFBuilder:
         text = text.replace(' ', '').replace('\u3000', '')
         symbol_set = {'。', '，', '？', '！', '；', '：', '、', '（', '）', '「', '」', '“', '”', '‘', '’', '《', '》', '【', '】',
                       '…', '—', '～', '　', '.', ',', '?', '!', ';', ':', '(', ')', '"', '"', '\'', '\'', '<', '>', '[',
-                      ']', '...', '~', '*', '―'}
+                      ']', '...', '~', '*', '―', '•', '・', '．', '/', '+', '-', '%'}
         for symbol in symbol_set:
             text = text.replace(symbol, '_')
         return text
