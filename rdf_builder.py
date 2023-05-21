@@ -8,13 +8,13 @@ class RDFBuilder:
         self.ns = Namespace('https://www.pornhub.com/')
         self.entity_list = json.load(open('data/entity_result.json', 'r', encoding='utf-8'))  # data的结构是一个list
 
-    def clean_text(self,text:str):
+    def clean_text(self, text: str):
         text = text.replace(' ', '').replace('\u3000', '')
         symbol_set = {'。', '，', '？', '！', '；', '：', '、', '（', '）', '「', '」', '“', '”', '‘', '’', '《', '》', '【', '】',
                       '…', '—', '～', '　', '.', ',', '?', '!', ';', ':', '(', ')', '"', '"', '\'', '\'', '<', '>', '[',
                       ']', '...', '~', '*', '―'}
         for symbol in symbol_set:
-            text = text.replace(symbol,'_')
+            text = text.replace(symbol, '_')
         return text
 
     def build(self):
