@@ -7,9 +7,12 @@ class Preprocess:
         self.base_path = 'data/暴雨洪涝/'
         title_list = os.listdir(self.base_path + '未标记暴雨洪涝')
         self.title_set = set([title[:-4] for title in title_list])
-        self.label_dict = {'LOC': '受灾地点', 'DB': '承载体', 'AIAC': '受灾面积', 'AIAC2': '受灾面积2', 'AInP': '受灾人数', 'AHC': '损毁房屋',
-                           'AMP': '失踪人数', 'ATP': '转移安置人口', 'AWP': '最大水深', 'AE': '经济损失', 'ATAC': '绝收面积', 'ASAC': '承灾面积',
-                           'ADP': '死亡人数', 'AImP': '受灾群众', 'AWD': '积水深度', 'DS': '开始日期', 'DO': '结束日期', 'TS': '开始时间', 'TO': '结束时间'}
+        self.label_dict = {'LOC': '受灾地点', 'DB': '承载体', 'AIAC': '受灾面积', 'AIAC2': '受灾面积2',
+                           'AInP': '受灾人数', 'AHC': '损毁房屋',
+                           'AMP': '失踪人数', 'ATP': '转移安置人口', 'AWP': '最大水深', 'AE': '经济损失',
+                           'ATAC': '绝收面积', 'ASAC': '承灾面积',
+                           'ADP': '死亡人数', 'AImP': '受灾群众', 'AWD': '积水深度', 'DS': '开始日期', 'DO': '结束日期',
+                           'TS': '开始时间', 'TO': '结束时间'}
         self.result_list = []  # 抽取标签后的list
 
     def get_entity(self, save_path):
@@ -17,10 +20,10 @@ class Preprocess:
         获取每个新闻的实体标注信息
         :param save_path: 结果保存的路径
         """
+        time_title_set = set([title[:-4] for title in os.listdir(self.base_path + '时间标签')])
         # 遍历每个新闻
         for title in self.title_set:
             entity_dict = {'title': title[5:]}
-            time_title_set = set([title[:-4] for title in os.listdir(self.base_path + '时间标签')])
             # 遍历每个子文件夹
             for sub_dir in ['暴雨洪涝位置', '承载体标签', '人口面积等标签暴雨洪涝_改', '时间标签']:
                 path = self.base_path + sub_dir + '/' + title + '.txt'
